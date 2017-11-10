@@ -11,12 +11,11 @@ def index():
 def recognize():
     if request.method == 'GET':
         return 'Upload a file to this URL to process.'
-    # image = Image.open(request.files['file'])
-    image = request.data
-
-@app.route('/retinasdk')
-def retinasdk():
-    return render_template('retina-sdk-1.0.min.js')
+    elif request.method == 'POST':
+        image = request.data
+        #Not yet supported
+        #return render_template('ImageRecognition.html', input_image = image
+        pass
 
 @app.route('/test')
 def test():
