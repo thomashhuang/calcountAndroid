@@ -13,4 +13,7 @@ def recognize():
     if request.method == 'GET':
         return 'Upload a file to this URL to process.'
     # image = Image.open(request.files['file'])
-    imgae = request.data
+    image = request.data
+
+if __name__ == '__main__':
+    app.run()
