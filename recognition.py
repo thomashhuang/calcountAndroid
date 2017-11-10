@@ -1,5 +1,4 @@
-from flask import Flask, request
-# from PIL import Image
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -14,6 +13,14 @@ def recognize():
         return 'Upload a file to this URL to process.'
     # image = Image.open(request.files['file'])
     image = request.data
+
+@app.route('/retinasdk')
+def retinasdk():
+    return render_template('retina-sdk-1.0.min.js')
+
+@app.route('/test')
+def test():
+    return render_template('ImageRecognition.html', link = 0)
 
 if __name__ == '__main__':
     app.run()

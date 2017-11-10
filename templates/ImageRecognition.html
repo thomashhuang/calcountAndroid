@@ -8,11 +8,11 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
-    <script src="retina-sdk-1.0.min.js"></script>
+    <script type="text/javascript" src="/static/js/retina-sdk-1.0.min.js"></script>
     <script>
       var workingLinks = ["http://www.kwcafeterias.biz/wp-content/uploads/2013/07/Platter-Fruit-Tray-8-13.jpg", "http://www.seriouseats.com/recipes/assets_c/2015/05/20150511-scrambled-eggs-vicky-wasik-11-thumb-1500xauto-423059.jpg", "https://iheartrecipes.com/wp-content/uploads/2015/03/IMG_9151.jpg"];
       // Change this link to the image of the food you want to recognize. (It should guess this image correctly)
-      var linkToImage = workingLinks[2];
+      var linkToImage = workingLinks[{{link}}];
       $("#imageToShow").attr('src', linkToImage);
 
       // Change this to the list of dining options on the day and location the input image was taken at.
