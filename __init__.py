@@ -9,14 +9,14 @@ def index():
 @app.route('/recognize', methods=['GET', 'POST'])
 def recognize():
     if request.method == 'GET':
-        return 'Upload a file to this URL to process.'
+        return 'Make a POST request to this URL to process.'
     elif request.method == 'POST':
         link_to_image = request.data
-        return render_template('ImageRecognition.html', link = link_to_image)
+        return render_template('ImageRecognition.html', link = 'http://2.bp.blogspot.com/_LOn5giboI0Q/TCrA_r7b7gI/AAAAAAAAELA/vzPzmtKgY14/s1600/IMG_1117.JPG')
 
 @app.route('/test')
 def test():
-    return render_template('ImageRecognition.html', link = 0)
+    return render_template('ImageRecognitionTest.html', link = 1)
 
 if __name__ == '__main__':
     app.run()

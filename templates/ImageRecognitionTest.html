@@ -4,13 +4,15 @@
     <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
     <script type="text/javascript" src="/static/js/retina-sdk-1.0.min.js"></script>
     <script>
-    var linkToImage = "{{link}}";
+    var workingLinks = ["http://www.kwcafeterias.biz/wp-content/uploads/2013/07/Platter-Fruit-Tray-8-13.jpg", "http://www.seriouseats.com/recipes/assets_c/2015/05/20150511-scrambled-eggs-vicky-wasik-11-thumb-1500xauto-423059.jpg", "https://iheartrecipes.com/wp-content/uploads/2015/03/IMG_9151.jpg"];
+    // Change this link to the image of the food you want to recognize. (It should guess this image correctly)
+    const linkToImage = workingLinks[{{link}}];
 
     // Change this to the list of dining options on the day and location the input image was taken at.
     var inputs = ["Bacon", "French Toast", "Hard Cooked Eggs", "Scrambled Eggs", "Vegetarian Sausage Patty", "Chai Oatmeal", "White Rice", "Tater-Tots", "Pancake Syrup", "Fruit Tray"];
 
     // Setting up Retina and Clarifai.
-    var fullClient = retinaSDK.FullClient("5dfc0c20-a095-11e7-9586-f796ac0731fb", "http://api.cortical.io/rest/", "en_associative");
+    const fullClient = retinaSDK.FullClient("5dfc0c20-a095-11e7-9586-f796ac0731fb", "http://api.cortical.io/rest/", "en_associative");
     const app = new Clarifai.App({apiKey: 'ef5deeb1449d41629720e2177bdacb84'});
 
     app.models.predict(Clarifai.FOOD_MODEL, linkToImage).then(
