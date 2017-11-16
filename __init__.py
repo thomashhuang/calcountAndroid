@@ -9,10 +9,10 @@ def index():
 @app.route('/recognize', methods=['GET', 'POST'])
 def recognize():
     if request.method == 'GET':
-        return render_template('ImageRecognition.html', link = 'http://2.bp.blogspot.com/_LOn5giboI0Q/TCrA_r7b7gI/AAAAAAAAELA/vzPzmtKgY14/s1600/IMG_1117.JPG')
+        return 'Make a POST request to this URL to process.'
     elif request.method == 'POST':
         link_to_image = request.data
-        return 'Make a POST request to this URL to process.'
+        return render_template('ImageRecognition.html', link = 'http://2.bp.blogspot.com/_LOn5giboI0Q/TCrA_r7b7gI/AAAAAAAAELA/vzPzmtKgY14/s1600/IMG_1117.JPG')
 
 @app.route('/test')
 def test():
