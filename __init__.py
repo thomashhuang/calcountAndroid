@@ -16,7 +16,7 @@ def recognize():
 
 @app.route('/test')
 def test():
-    return render_template('ImageRecognitionTest.html', link = 1)
+    return render_template('ImageRecognitionTest.html', index = 0)
 
 if __name__ == '__main__':
     app.run()
