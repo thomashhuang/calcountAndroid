@@ -19,22 +19,22 @@ import clarifai2.dto.prediction.Concept;
  * Gets an Image
  */
 
-public class ImageRecognizerAsyncTask extends AsyncTask<String, Integer, List<List<String>>> {
+public class ImageRecognizerAsyncTask extends AsyncTask<byte[], Integer, List<List<String>>> {
     private final static String API_KEY = "b8b677d0128049f8a847e200c3469cfb";
 
     @Override
-    protected List<List<String>> doInBackground(String... urls) {
+    protected List<List<String>> doInBackground(byte[]... images) {
         //https://www.javatraineronline.com%2Fjava%2Fimage-recognition-in-java-using-clarifai-api%2F
         // &usg=AOvVaw0FJXHhC_gpOkH76Ys_KCvV
         List<List<String>> totalResultList = new ArrayList<List<String>>();
 
-        for (String imageUrl : urls) {
-            if (imageUrl != null && !imageUrl.isEmpty()) {
+        for (byte[] image : images) {
+            if (image != null) {
                 List<String> resultList = new ArrayList<String>();
                 final ClarifaiClient client = new ClarifaiBuilder(API_KEY).buildSync();
                 final List<ClarifaiOutput<Concept>> predictionResults = client.getDefaultModels()
                         .generalModel().predict().withInputs(ClarifaiInput.forImage(ClarifaiImage
-                                .of(imageUrl))).executeSync()
+                                .of(image))).executeSync()
                         .get();
 
                 if (predictionResults != null && predictionResults.size() > 0) {
