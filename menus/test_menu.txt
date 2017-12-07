@@ -1,0 +1,4 @@
+Sliced Chicken: {u'sweet': 0.57929764, u'fish': 0.5444549000000001, u'chicken': 0.518551016, u'meat': 0.628788932, u'seafood': 0.547563418}
+Miso Soup: {u'broth': 0.7669373, u'tofu': 0.6422375619999999, u'miso soup': 0.813007116, u'vegetable': 0.9145891199999999, u'soup': 0.97829794}
+Sliced Pineapple: {u'breadfruit': 0.5002017820000001, u'sweet': 0.8709989499999999, u'juice': 0.89007164, u'pineapple': 0.91228443}
+Egg Patty: {u'cheese': 0.5470826019999999, u'chicken': 0.519788466, u'beef': 0.6271438, u'sandwich': 0.535151868, u'bread': 0.7381136779999999, u'meat': 0.707320514, u'lettuce': 0.6598092259999999}

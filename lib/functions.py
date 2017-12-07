@@ -12,7 +12,7 @@ shutterstock_auth = 'Basic ZjhlZDMtZjAzZDQtZWE5NmEtNTkxMWEtNzYyM2YtNjc4ZDc6OTVlM
 Given a list of food names in the form of strings, uses retinaSDK to process all of them and stores in a file and returns result as a string.
 '''
 def preprocess(menu_items):
-    menu_file = open('processed_menu.txt', 'w')
+    menu_file = open('menus/test_menu.txt', 'w')
     for item in menu_items:
         menu_file.write(item + ': ')
         best_descriptions = get_best_descriptions(item)
