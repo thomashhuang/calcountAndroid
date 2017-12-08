@@ -26,19 +26,14 @@ Given the name of a food item, creates and returns a dictionary of the best desc
 def get_best_descriptions(food_item):
     acceptance_threshhold = .5 #How certain a guess has to be to be considered a part of our final dict
     descriptions = dict()
-    req = urllib2.Request('https://api.shutterstock.com/v2/images/search?per_page=5&query=' + food_item)
+    important_words = retina_client.getKeywords(food_item)
+    search_words = str()
+    for word in important_words:
+        search_words += word + ' '
+    req = urllib2.Request('https://api.shutterstock.com/v2/images/search?per_page=4&query=' + search_words)
     req.add_header('Authorization', shutterstock_auth)
-    response = json.loads(str(urllib2.urlopen(req).read()))
-    '''
-    if response['total_count'] == 0:
-        keywords_of_food_item = retina_client.getKeywords(food_item)
-        keywords_string = str()
-        for word in keywords_of_food_item:
-            keywords_string += word + ' '
-        new_req = urllib2.Request('https://api.shutterstock.com/v2/images/search?per_page=8&query=' + keywords_string)
-        new_req.add_header('Authorization', shutterstock_auth)
-        response = json.loads(str(urllib2.urlopen(new_req).read()))
-    '''
+    r = urllib2.urlopen(req).read()
+    response = json.loads(str(r))
     if response['total_count'] == 0:
         return None
     num_pictures = 0

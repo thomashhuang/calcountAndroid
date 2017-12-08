@@ -1,4 +1,5 @@
 from flask import Flask
+from celery import Celery
 from lib import functions
 
 app = Flask(__name__)
@@ -12,7 +13,7 @@ This route tests the preprocessing code and prints it to an output text file.
 '''
 @app.route('/test')
 def test():
-    return functions.preprocess(['Sliced Chicken' , 'Miso Soup', 'Sliced Pineapple' , 'Egg Patty'])
+    return functions.preprocess(['Cuban Mojo Pork' , 'Fish Tilapia with Lemon Butter & Capers' , 'Herbed Grilled Turkey' ,'Spicy Black Bean Burger Patty'])
 
 '''
 Recognizes the closest match given a picture and the dining hall in a POST request.
@@ -25,10 +26,11 @@ Valid halls:
     lar
     par
 '''
-@app.route('/recognize/<hall>', methods=['POST'])
-def recognize(hall):
-    valid_inputs = {'busey-evans', 'far', 'ikenberry', 'isr', 'lar', 'par'}
-    if hall not in valid_inputs:
+@app.route('/recognize/<hall>/<meal>', methods=['POST'])
+def recognize(hall, meal):
+    valid_halls = {'busey-evans', 'far', 'ikenberry', 'isr', 'lar', 'par'}
+    valid_meals = {'breakfast', 'lunch', 'dinner'}
+    if hall not in valid_halls or meal not in valid_meals:
         return 'Invalid input'
     pass
 
