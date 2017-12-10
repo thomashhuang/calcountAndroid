@@ -1,19 +1,37 @@
-from flask import Flask
+from flask import Flask, request
 from celery import Celery
 from lib import functions
 
 app = Flask(__name__)
+'''
+def make_celery(app):
+    celery = Celery(app.import_name, broker='redis://localhost:6379')
+    TaskBase = celery.Task
+    class ContextTask(TaskBase):
+        abstract = True
+        def __call__(self, *args, **kwargs):
+            with app.app_context():
+                return TaskBase.__call__(self, *args, **kwargs)
+    celery.Task = ContextTask
+    return celery
+'''
 
 @app.route('/')
 def index():
-    return 'POST to /recognize/(dining hall) with Clarifai outupt of an image or visit /test to test.'
+    return 'POST to /recognize/(dining hall)/(meal) with Clarifai outupt of an image or visit /test to test.'
+
+@app.route('/process')
+def process():
+    functions.preprocess(['Fruit Tray', 'Italian Sausage and Peppers' , 'Smothered Grilled Chicken Breast' , 'Cabbage Rolls', 'Broccoli Cheese Soup' , 'Beef Barley Soup', 'Spinach and Strawberry Salad' , 'Chicken Caesar Salad', 'Sliced Garlic Bread', 'Roasted Carrots tossed with Fresh Herbs', 'Spicy Broccoli', 'Spaghetti' , 'Brown Rice Pilaf', 'Italian Meat Sauce' , 'Marinara Sauce', 'Almond Orange Olive Oil Cake'], 'isr', 'dinner')
+    return 'Processed!'
 
 '''
-This route tests the preprocessing code and prints it to an output text file.
+This route tests the preprocessing code, outputs to a text file, then returns the contents of that file.
 '''
 @app.route('/test')
 def test():
-    return functions.preprocess(['Cuban Mojo Pork' , 'Fish Tilapia with Lemon Butter & Capers' , 'Herbed Grilled Turkey' ,'Spicy Black Bean Burger Patty'])
+    functions.preprocess(['Cuban Mojo Pork' , 'Halal Baked Chicken w/ BBQ Sauce' , 'Herbed Grilled Turkey' ,'Spicy Black Bean Burger Patty'])
+    return open('menus/test_menu.txt', 'r').read()
 
 '''
 Recognizes the closest match given a picture and the dining hall in a POST request.
@@ -32,7 +50,10 @@ def recognize(hall, meal):
     valid_meals = {'breakfast', 'lunch', 'dinner'}
     if hall not in valid_halls or meal not in valid_meals:
         return 'Invalid input'
-    pass
+    request_data = json.loads(request.data)
+    description = request_data['description']
+    match_list = functions.recognize(description, hall, meal)
+    return jsonify(matches=match_list)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

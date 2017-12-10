@@ -9,16 +9,24 @@ retina_client = retinasdk.LiteClient('5dfc0c20-a095-11e7-9586-f796ac0731fb')
 shutterstock_auth = 'Basic ZjhlZDMtZjAzZDQtZWE5NmEtNTkxMWEtNzYyM2YtNjc4ZDc6OTVlMTktZmVlOTEtNjdmZjItYjIyYjItMzMwNDUtZjQyMTA='
 
 '''
-Given a list of food names in the form of strings, uses retinaSDK to process all of them and stores in a file and returns result as a string.
+Given a list of foods and the hall and meal, stores clarifai descriptions in a text file.
+When testing, stores in a file called 'test_menu.txt'
 '''
-def preprocess(menu_items):
-    menu_file = open('menus/test_menu.txt', 'w')
+def preprocess(menu_items, hall = 'test', meal = 'menu'):
+    menu_file = open('menus/' + hall + '_' + meal + '.txt', 'w')
     for item in menu_items:
         menu_file.write(item + ': ')
         best_descriptions = get_best_descriptions(item)
-        menu_file.write(str(best_descriptions) + '\n')
-    menu_file.close() 
-    return 'Processed!'
+        description_string = ''
+        keywords = retina_client.getKeywords(item)
+        for key in best_descriptions.keys():
+            description_string += str(key) + ' '
+        for word in keywords:
+            description_string += word + ' '
+        for keyword in retina_client.getKeywords(description_string):
+            menu_file.write(keyword + ' ')
+        menu_file.write('\n')
+    menu_file.close()
 
 '''
 Given the name of a food item, creates and returns a dictionary of the best descriptions of the food.
@@ -52,6 +60,22 @@ def get_best_descriptions(food_item):
             descriptions.pop(key)
     return descriptions
 
-
-def compare():
-    pass
+'''
+Given a string which contains clarifai output of a picture, compares it with the menu items
+of the given hall and meal. Returns the top five results with the top being most likely.
+'''
+def recognize(description, hall, meal):
+    menu = open('menus/' + hall + '_' + meal + '.txt', 'r')
+    matches = dict()
+    line = menu.read_line()
+    while line:
+        food_item = line[0:index(':')]
+        match_value = retina_client.compare(description, line[index(':') + 2 : -1])
+        matches[match_value] = food_item
+        line = menu.read_line()
+    possibility_list = list()
+    for probability in sorted(matches):
+        possibility_list.insert(0, matches[probability])
+    if len(possibility_list > 5):
+        return possibility_list[:5]
+    return possibility_list

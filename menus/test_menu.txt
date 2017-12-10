@@ -1,4 +1,4 @@
-Cuban Mojo Pork: {u'pork': 0.8392522775, u'fish': 0.6299515124999999, u'chicken': 0.73368536, u'lime': 0.6324051525, u'beef': 0.838305765, u'vegetable': 0.6391433200000001, u'pepper': 0.5037546425, u'meat': 0.8413700775, u'sauce': 0.75055676}
-Fish Tilapia with Lemon Butter & Capers: {u'plaice': 0.7063528324999999, u'fish': 0.8918785875, u'chicken': 0.8734979875, u'cream': 0.6614223499999999, u'lemon': 0.846774585, u'parsley': 0.6087300775, u'fillet': 0.7647535799999999, u'vegetable': 0.727779625, u'sauce': 0.969629015, u'fillet of sole': 0.550395655, u'pepper': 0.5968362425, u'herb': 0.7570416625, u'meat': 0.7082820750000001, u'seafood': 0.6861946649999999}
-Herbed Grilled Turkey: {u'chicken': 0.96225313, u'turkey': 0.9043413250000001, u'vegetable': 0.74619739, u'turkey breast': 0.62748371, u'pepper': 0.7350269, u'garlic': 0.500471025, u'meat': 0.9258675874999999}
-Spicy Black Bean Burger Patty: {u'beef': 0.8386717025000001, u'parsley': 0.6923374124999999, u'vegetable': 0.57181178, u'meat': 0.80548558}
+mojo pork : pork chicken beef meat sauce 
+sauce chicken bbq : pork barbecue chicken beef sauce meat 
+turkey : chicken turkey vegetable pepper meat 
+spicy patty bean burger : beef meat 
