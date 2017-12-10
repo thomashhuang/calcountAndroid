@@ -32,13 +32,13 @@ def preprocess(menu_items, hall = 'test', meal = 'menu'):
 Given the name of a food item, creates and returns a dictionary of the best descriptions of the food.
 '''
 def get_best_descriptions(food_item):
-    acceptance_threshhold = .5 #How certain a guess has to be to be considered a part of our final dict
+    acceptance_threshhold = .65 #How certain a guess has to be to be considered a part of our final dict
     descriptions = dict()
     important_words = retina_client.getKeywords(food_item)
     search_words = str()
     for word in important_words:
         search_words += word + ' '
-    req = urllib2.Request('https://api.shutterstock.com/v2/images/search?per_page=4&query=' + search_words)
+    req = urllib2.Request('https://api.shutterstock.com/v2/images/search?per_page=3&query=' + search_words)
     req.add_header('Authorization', shutterstock_auth)
     r = urllib2.urlopen(req).read()
     response = json.loads(str(r))

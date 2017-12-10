@@ -1,16 +1,16 @@
-Fruit Tray: fruit strawberry grape tray 
-Italian Sausage and Peppers: sausage vegetable peppers meat parsley pepper cheese 
+Fruit Tray: fruit tray 
+Italian Sausage and Peppers: sausage peppers meat pepper 
 Smothered Grilled Chicken Breast: chicken breast meat pork beef parsley pepper 
-Cabbage Rolls: vegetable cabbage meat pork beef sauce rice chicken pepper rolls 
-Broccoli Cheese Soup: vegetable garlic soup parsley herb cheese broccoli cream bread broth 
-Beef Barley Soup: vegetable soup barley meat parsley beef carrot broth 
-Spinach and Strawberry Salad: spinach salad strawberry vegetable tomato lettuce cheese pepper basil 
-Chicken Caesar Salad: salad vegetable tomato chicken lettuce meat cheese caesar 
-Sliced Garlic Bread: garlic bread herb parsley butter cheese toast baguette 
-Roasted Carrots tossed with Fresh Herbs: herbs vegetable carrots juice carrot orange 
-Spicy Broccoli: vegetable spicy salad meat beef pork broccoli chicken carrot pepper 
-Spaghetti: vegetable spaghetti tomato pasta sauce basil macaroni 
-Brown Rice Pilaf: rice cereal meat pork corn brown pilaf risotto 
-Italian Meat Sauce: sauce meat vegetable tomato garlic parsley basil 
-Marinara Sauce: tomato sauce vegetable garlic pepper ketchup marinara 
-Almond Orange Olive Oil Cake: vegetable olive cream dessert cake almond orange rice oil 
+Cabbage Rolls: cabbage vegetable meat sauce pepper chicken rolls 
+Broccoli Cheese Soup: vegetable broccoli soup herb cream cheese 
+Beef Barley Soup: vegetable garlic soup barley meat beef broth 
+Spinach and Strawberry Salad: spinach salad vegetable tomato lettuce strawberry cheese pepper basil 
+Chicken Caesar Salad: salad vegetable lettuce chicken cheese caesar 
+Sliced Garlic Bread: garlic bread herb parsley butter toast baguette 
+Roasted Carrots tossed with Fresh Herbs: herbs vegetable carrots carrot orange 
+Spicy Broccoli: vegetable broccoli spicy salad carrot pepper 
+Spaghetti: vegetable spaghetti tomato pasta sauce basil 
+Brown Rice Pilaf: rice meat pork brown pilaf 
+Italian Meat Sauce: vegetable meat sauce parsley 
+Marinara Sauce: tomato sauce vegetable garlic marinara 
+Almond Orange Olive Oil Cake: vegetable olive almond cake orange oil 
