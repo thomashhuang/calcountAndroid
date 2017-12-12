@@ -8,9 +8,12 @@ app = Flask(__name__)
 def index():
     return 'POST to /recognize/(dining hall)/(meal) with Clarifai outupt of an image or visit /test to test.'
 
+'''
+This route runs the preprocessing code on the list of items. The results of processing are then stored in a text file corresponding to the hall and meal.
+'''
 @app.route('/process')
 def process():
-    functions.preprocess(['Beef Fajitas', 'Vegetarian Burrito Casserole', 'Taco-Seasoned Chicken', 'Paella' , 'Taco-Seasoned Beef', 'White Corn Tortilla Chips' , 'Refried Beans', 'Crema De Elote Soup' , 'Spicy Adobo Pork Soup', 'Flour Tortilla',  'Sauteed Spinach with Almonds and Raisins', 'Black Beans' , 'Sweet Corn Cake' , 'Caribbean Rice And Bean', 'Cheese Sauce', 'Churros' , 'Paletas' , 'Mango Flan'], 'isr', 'dinner')
+    functions.preprocess(['Fruit Tray', 'Makanek', 'Smoked Tofu Steak Mango Chutney', 'Lemon Dill Chicken Breast', 'Korean Miso Soup', 'Tuscan Soup', 'Cobb Salad', 'Tuscan Orzo Salad', 'Sliced Garlic Bread', 'Braised Red Cabbage', 'Green Beans', 'Jasmine Rice', 'Gemelli Pasta', 'Marinara Sauce', 'Creamy Pesto Sauce', 'Dutch Apple Pie'], 'isr', 'dinner')
     return 'Processed!'
 
 '''
@@ -31,6 +34,10 @@ Valid halls:
     isr
     lar
     par
+Valid meals:
+    breakfast
+    lunch
+    dinner
 '''
 @app.route('/recognize/<hall>/<meal>', methods=['POST'])
 def recognize(hall, meal):
