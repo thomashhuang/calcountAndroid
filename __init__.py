@@ -1,20 +1,7 @@
 from flask import Flask, request
-from celery import Celery
 from lib import functions
 
 app = Flask(__name__)
-'''
-def make_celery(app):
-    celery = Celery(app.import_name, broker='redis://localhost:6379')
-    TaskBase = celery.Task
-    class ContextTask(TaskBase):
-        abstract = True
-        def __call__(self, *args, **kwargs):
-            with app.app_context():
-                return TaskBase.__call__(self, *args, **kwargs)
-    celery.Task = ContextTask
-    return celery
-'''
 
 @app.route('/')
 def index():
@@ -22,7 +9,7 @@ def index():
 
 @app.route('/process')
 def process():
-    functions.preprocess(['Fruit Tray', 'Italian Sausage and Peppers' , 'Smothered Grilled Chicken Breast' , 'Cabbage Rolls', 'Broccoli Cheese Soup' , 'Beef Barley Soup', 'Spinach and Strawberry Salad' , 'Chicken Caesar Salad', 'Sliced Garlic Bread', 'Roasted Carrots tossed with Fresh Herbs', 'Spicy Broccoli', 'Spaghetti' , 'Brown Rice Pilaf', 'Italian Meat Sauce' , 'Marinara Sauce', 'Almond Orange Olive Oil Cake'], 'isr', 'dinner')
+    functions.preprocess(['Beef Fajitas', 'Vegetarian Burrito Casserole', 'Taco-Seasoned Chicken', 'Paella' , 'Taco-Seasoned Beef', 'White Corn Tortilla Chips' , 'Refried Beans', 'Crema De Elote Soup' , 'Spicy Adobo Pork Soup', 'Flour Tortilla',  'Sauteed Spinach with Almonds and Raisins', 'Black Beans' , 'Sweet Corn Cake' , 'Caribbean Rice And Bean', 'Cheese Sauce', 'Churros' , 'Paletas' , 'Mango Flan'])
     return 'Processed!'
 
 '''
