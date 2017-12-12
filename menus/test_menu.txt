@@ -1,4 +1,18 @@
-mojo pork : pork chicken beef meat sauce 
-sauce chicken bbq : pork barbecue chicken beef sauce meat 
-turkey : chicken turkey vegetable pepper meat 
-spicy patty bean burger : beef meat 
+Beef Fajitas: beef vegetable tomato meat pork onion pepper barbecue fajitas 
+Vegetarian Burrito Casserole: vegetable tomato cheese corn chili beef sauce meat salad pork 
+Taco-Seasoned Chicken: chicken meat 
+Paella: vegetable seafood meat pepper paella 
+Taco-Seasoned Beef: beef pork meat steak 
+White Corn Tortilla Chips: corn chips tortilla 
+Refried Beans: cereal beans coffee relish espresso mocha cappuccino 
+Crema De Elote Soup: soup crema elote 
+Spicy Adobo Pork Soup: pork seafood vegetable cabbage soup meat salad spicy chicken rice 
+Flour Tortilla: flour bread dough pastry wheat cake pancake tortilla pita crepe 
+Sauteed Spinach with Almonds and Raisins: vegetable seafood almonds salad meat spinach parsley raisins fish herb 
+Black Beans: cereal beans coffee relish espresso mocha cappuccino 
+Sweet Corn Cake: cake pastry corn honey bread candy 
+Caribbean Rice And Bean: vegetable rice meat beef caribbean bean chicken 
+Cheese Sauce: sauce cheese 
+Churros: chocolate pastry cake candy bread cookie churros 
+Paletas: coffee 
+Mango Flan: mango cream flan 

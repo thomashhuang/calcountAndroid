@@ -5,6 +5,7 @@ Flask-Moment==0.5.2
 Flask-Script==2.0.6
 Flask-WTF==0.14.2
 gunicorn==19.7.1
+jsonschema==2.5.1
 Pillow==2.9.0
 requests==2.13.0
 retinasdk==1.0.0

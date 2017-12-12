@@ -1,5 +1,6 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from lib import functions
+import json
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ def index():
 
 @app.route('/process')
 def process():
-    functions.preprocess(['Beef Fajitas', 'Vegetarian Burrito Casserole', 'Taco-Seasoned Chicken', 'Paella' , 'Taco-Seasoned Beef', 'White Corn Tortilla Chips' , 'Refried Beans', 'Crema De Elote Soup' , 'Spicy Adobo Pork Soup', 'Flour Tortilla',  'Sauteed Spinach with Almonds and Raisins', 'Black Beans' , 'Sweet Corn Cake' , 'Caribbean Rice And Bean', 'Cheese Sauce', 'Churros' , 'Paletas' , 'Mango Flan'])
+    functions.preprocess(['Beef Fajitas', 'Vegetarian Burrito Casserole', 'Taco-Seasoned Chicken', 'Paella' , 'Taco-Seasoned Beef', 'White Corn Tortilla Chips' , 'Refried Beans', 'Crema De Elote Soup' , 'Spicy Adobo Pork Soup', 'Flour Tortilla',  'Sauteed Spinach with Almonds and Raisins', 'Black Beans' , 'Sweet Corn Cake' , 'Caribbean Rice And Bean', 'Cheese Sauce', 'Churros' , 'Paletas' , 'Mango Flan'], 'isr', 'dinner')
     return 'Processed!'
 
 '''

@@ -19,12 +19,16 @@ def preprocess(menu_items, hall = 'test', meal = 'menu'):
         best_descriptions = get_best_descriptions(item)
         description_string = ''
         keywords = retina_client.getKeywords(item)
-        for key in best_descriptions.keys():
-            description_string += str(key) + ' '
-        for word in keywords:
-            description_string += word + ' '
-        for keyword in retina_client.getKeywords(description_string):
-            menu_file.write(keyword + ' ')
+        if best_descriptions != None:
+            for key in best_descriptions.keys():
+                description_string += str(key) + ' '
+        if len(keywords) > 0:
+            for word in keywords:
+                description_string += word + ' '
+        keyword_string = retina_client.getKeywords(description_string)
+        if len(keyword_string) > 0:
+            for keyword in keyword_string:
+                menu_file.write(keyword + ' ')
         menu_file.write('\n')
     menu_file.close()
 
@@ -65,17 +69,16 @@ Given a string which contains clarifai output of a picture, compares it with the
 of the given hall and meal. Returns the top five results with the top being most likely.
 '''
 def recognize(description, hall, meal):
-    menu = open('menus/' + hall + '_' + meal + '.txt', 'r')
     matches = dict()
-    line = menu.read_line()
-    while line:
-        food_item = line[0:index(':')]
-        match_value = retina_client.compare(description, line[index(':') + 2 : -1])
-        matches[match_value] = food_item
-        line = menu.read_line()
-    possibility_list = list()
-    for probability in sorted(matches):
-        possibility_list.insert(0, matches[probability])
-    if len(possibility_list > 5):
-        return possibility_list[:5]
+    fingerprint = retina_client.getFingerprint(description)
+    with open('menus/' + hall + '_' + meal + '.txt') as menu:
+        for line in menu:
+            food_item = line[0:line.index(':')]
+            match_value = retina_client.compare(fingerprint, line[line.index(':') + 2:])
+            matches[match_value] = food_item
+        possibility_list = list()
+        for probability in sorted(matches):
+            possibility_list.insert(0, matches[probability])
+        if len(possibility_list) > 5:
+            return possibility_list[:5]
     return possibility_list
